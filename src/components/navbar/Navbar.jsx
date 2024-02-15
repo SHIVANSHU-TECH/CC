@@ -42,12 +42,12 @@ const links = [
     id: 6,
     title: "Opportunities",
     url: "/internships",
-  },
-  {
-    id:7,
-    title:"Dashboard",
-    url:"/user-dashboard"
   }
+  // {
+  //   id:7,
+  //   title:"Dashboard",
+  //   url:"/user-dashboard"
+  // }
 ];
 
 const Navbar = () => {

@@ -57,10 +57,11 @@ export default function Page() {
       <Link href='/events/form' className="create">create</Link>
         <div className="cardContainer">
           <Card
+           
             title="The Comedy Show"
             date="08 Aug 2023"
             desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis tenetur nobis, libero eveniet veniam vero aperiam error quia odio rem?"
-          />
+            />
           <Card
             title="The Comedy Night Show"
             date="11 Aug 2023"

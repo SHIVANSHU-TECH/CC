@@ -80,7 +80,7 @@ input[type], select {
   @media screen and (min-width:351px) and (max-width: 605px) {
     .Iform{
         position: absolute;
-        top: 14%;
+        top: 18%;
         left: 15%; 
         gap:1rem;
         background: initial;

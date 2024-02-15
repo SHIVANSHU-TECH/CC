@@ -29,6 +29,11 @@
   position: relative;
   /* border-bottom-style: inset; */
 }
+
+.links a:hover{
+  color: aqua;
+  
+}
 #menuBig{
 display: flex;
 }
@@ -66,6 +71,11 @@ display: flex;
   margin: 1rem 0;
   font-size: larger;
   font-weight: bold;
+  }
+  .links a {
+    margin: 1rem 0;
+    font-size: larger;
+    font-weight: bold;
   }
   .container{
     position: absolute;
