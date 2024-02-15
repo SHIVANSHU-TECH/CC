@@ -33,7 +33,7 @@ const About = () => {
             Our mission is to provide a seamless resource where you can discover 
             exciting upcoming events, participate in thrilling hackathons, access 
             your syllabus effortlessly, and connect with a community that shares your
-            academic journey.additionally, we're dedicated to bridging the gap between
+            academic journey.additionally, we are dedicated to bridging the gap between
             institutions and creating a powerful union of young minds.
           </p>
         </div>
@@ -43,7 +43,7 @@ const About = () => {
            our platform, you can engage with fellow students, share ideas, collaborate 
            on projects, and collectively shape an inspiring community that transcends
            college boundaries. Join us in building a stronger, interconnected 
-           student community and navigate the exciting world of college life together!
+           student community and navigate the exciting world of college life together&apos;!
             <br />
             <br /> - Dynamic Websites
             <br />
