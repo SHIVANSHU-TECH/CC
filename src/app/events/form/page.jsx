@@ -9,48 +9,46 @@ export default function Eform() {
     const [event_category, setEvent_category] = useState('');
     const [eimg, setEimg] = useState('');
     const [elink, setElink] = useState('');
-    const handleSubmit = async(e) => {
-      e.preventDefault();
-      console.log(event, date, desc, event_category, eimg, elink);
-      
+    console.log(event,date,desc,event_category,eimg,elink)
 
+  
+    const handleSubmit = async (e) => {
       try {
-
-      
-
-
-        const res = await fetch("http://localhost:5000/api/v1/event/", {
+      e.preventDefault();
+  
+      console.log(event_category);
+  
+        const token = localStorage.getItem("token");
+      console.log(token);
+        const response = await fetch("http://localhost:5000/api/v1/event/", {
           method: "POST",
           headers: {
-           
             "Content-Type": "application/json",
+            "authorization": `Bearer ${token}`,
           },
-          body:{
-            title : `${event}`,
-            description:`${desc}`,
-            image:`${elink}`,
-            category:`${event_category}`,
-            link:`${elink}`,
-            DeadlineDate:`${data}`
-           
-          }
-
+          body: JSON.stringify({
+            title: event,
+            description: desc,
+            image: eimg,
+            category: event_category,
+            link: elink,
+            DeadlineDate: date,
+          }),
         });
-        const data = await res.json();
-       if( data){
-       
-        console.log(data)
-       }
-       else{
   
-        console.log("error while adding jobs",data);
-       } 
-      } catch (err) {
-      
-        console.log(err);
-      }
-
-    };
+          const data = await response.json();
+          console.log(data);
+          alert(data.message);
+          location.href="/events"
+        } catch (err) {
+          console.log(err);
+        }
+      };
+    const handleCategory =(e)=>{
+      set_category(e.target.value)
+    }
+  
+  
     
   return (
     <div>

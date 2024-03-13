@@ -53,7 +53,7 @@ export default function Page() {
     <main>
       <Landing />
       
-      <Section ID="spiritual" title="Cultural Events Near You" link="spiritual">
+      <Section ID="spiritual" title="Events Near You" link="spiritual">
       <Link href='/events/form' className="create">create</Link>
         <div className="cardContainer">
           <Card
@@ -89,7 +89,7 @@ export default function Page() {
           />
         </div>
       </Section>
-      <Section ID="comedy" title="Technical Events Near You" link="comedy">
+      {/* <Section ID="comedy" title="Technical Events Near You" link="comedy">
         <div className="cardContainer">
           <Card
             title="The Comedy Show"
@@ -97,8 +97,8 @@ export default function Page() {
             desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis tenetur nobis, libero eveniet veniam vero aperiam error quia odio rem?"
           />
         </div>
-      </Section>
-      <Section ID="artist" title="Sports event Near You" link="arts">
+      </Section> */}
+      {/* <Section ID="artist" title="Sports event Near You" link="arts">
         <div className="cardContainer">
           <Card
             title="The Historical Show"
@@ -111,7 +111,7 @@ export default function Page() {
             desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis tenetur nobis, libero eveniet veniam vero aperiam error quia odio rem?"
           />
         </div>
-      </Section>
+      </Section> */}
     
     
 {AllEvents.length > 0 &&

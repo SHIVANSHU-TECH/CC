@@ -22,33 +22,28 @@ export default function Iform() {
         headers: {
          
           "Content-Type": "application/json",
+          "authorization": `Bearer ${localStorage.getItem("token")}`,
         },
-        body:{
+        body:JSON.stringify({
           title : `${post}`,
           description:`${jd}`,
-          
+          companyName:`${cname}`,
           
           link:`${jl}`,
           DeadlineDate:`${vdate}`
          
-        }
+        })
 
       });
       const data = await res.json();
-     if( data){
-     
-      console.log(data)
-     }
-     else{
-
-      console.log("error while adding jobs",data);
-     } 
+      alert(data.message);
     } catch (err) {
     
       console.log(err);
     }
     
   };
+  
   return (
     <div>
     <form className='Iform' onSubmit={handleSubmit}>

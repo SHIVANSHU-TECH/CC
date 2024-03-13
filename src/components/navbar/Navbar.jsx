@@ -43,15 +43,15 @@ const links = [
     title: "Opportunities",
     url: "/internships",
   }
-  // {
-  //   id:7,
-  //   title:"Dashboard",
-  //   url:"/user-dashboard"
-  // }
+   ,{
+     id:7,
+     title:"Dashboard",
+    url:"/user-dashboard"
+   }
 ];
 
 const Navbar = () => {
-   const router = useRouter();
+  const router = useRouter();
   const session = useSession();
   const [menuOpen, setMenuOpen]=useState(false)
   const [logg, setlogg] = useState(false)
@@ -73,7 +73,7 @@ const Navbar = () => {
     const token = localStorage.getItem("token");
       if( token && token.length > 0){
         setlogg(true);
-        router.push("/")
+        // router.push("/")
       }
       else{
         setlogg(false);
@@ -81,9 +81,8 @@ const Navbar = () => {
       }
 
 
-  }, [])
+  }, [localStorage.getItem("token")])
   
-
 
   return (
     <div className={styles.container}  >
