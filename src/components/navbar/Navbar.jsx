@@ -33,21 +33,21 @@ const links = [
     title: "About",
     url: "/about",
   },
-  {
-    id: 5,
-    title: "Auth",
-    url: "/register",
-  },
+  // {
+  //   id: 5,
+  //   title: "Auth",
+  //   url: "/register",
+  // },
   {
     id: 6,
     title: "Opportunities",
     url: "/internships",
   }
-   ,{
-     id:7,
-     title:"Dashboard",
-    url:"/user-dashboard"
-   }
+  //  ,{
+  //    id:7,
+  //    title:"Dashboard",
+  //   url:"/user-dashboard"
+  //  }
 ];
 
 const Navbar = () => {
@@ -63,25 +63,26 @@ const Navbar = () => {
   // const containerStyle = {
   //   backgroundColor: isDarkTheme ? "#fff" : "#111",
   // };
-   const handlesignOut =()=>{
-    localStorage.removeItem("token");
-    setlogg(false);
-    router.push("/")
-   }
+  //  const handlesignOut =()=>{
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("dashboardAuthenticated");
+  //   setlogg(false);
+  //   router.push("/")
+  //  }
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-      if( token && token.length > 0){
-        setlogg(true);
-        // router.push("/")
-      }
-      else{
-        setlogg(false);
-        router.push("/login")
-      }
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //     if( token && token.length > 0){
+  //       setlogg(true);
+  //       router.push("/")
+  //     }
+  //     else{
+  //       setlogg(false);
+  //       router.push("/login")
+  //     }
 
 
-  }, [localStorage.getItem("token")])
+  // }, [localStorage.getItem("token")])
   
 
   return (
@@ -104,7 +105,6 @@ const Navbar = () => {
             Logout
           </button>
         )}
-        
      </div>
 }
       <div className={styles.links} id={styles.menuBig} >
@@ -114,12 +114,11 @@ const Navbar = () => {
             {link.title}
           </Link>
         ))}
-        {logg && (
+        {/* {logg && (
           <button className={styles.logout} onClick={()=>handlesignOut()}>
             Logout
           </button>
-        )}
-        
+        )} */}
      </div>
       < AiOutlineMenu  className={styles.menu} onClick={()=>{
         setMenuOpen(!menuOpen);
@@ -127,6 +126,5 @@ const Navbar = () => {
       } />
     </div>
   );
-};
-
+    };
 export default Navbar;

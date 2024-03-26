@@ -24,8 +24,8 @@
 @media (max-width: 1024px) and (min-width: 768px) {
     .dashboardContainer {
         gap: 2rem;
-        margin: 0;
-        margin:0;
+        margin-left:3%;
+
     }
 }
 

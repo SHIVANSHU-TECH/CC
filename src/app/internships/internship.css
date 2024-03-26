@@ -1,57 +1,30 @@
-.internshipSection{
+.internshipSection {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 15rem;
-}
-
-.cardContainer {
-    margin-top: 5rem;
+  }
+  
+  .icreate {
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .cardContainer {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    width: 100%;
-}
-
-
-@media screen and (max-width: 720px) {
-    .internshipSection {
-        gap: 2rem;
-        flex-direction: column;
-    }
-
-    
-}
-
-@media screen and (min-width: 721px) and (max-width: 1024px) {
-    .internshipSection {
-        gap: 5rem;
-        flex-direction: column;
-    }
-
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    justify-content: center;
+  }
+  
+  @media screen and (max-width: 768px) {
     .cardContainer {
-        grid-template-columns: 50% 50%;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
-}
-
-@media screen  and (min-width: 1025px) and (max-width: 1280px) {
-    .internshipSection {
-        gap: 8rem;
-        
+  }
+  
+  @media screen and (max-width: 480px) {
+    .cardContainer {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
-
-   .cardContainer {
-    grid-template-columns: auto;
-   }
-    
-}
-
-
-@media screen  and (min-width: 0px) and (max-width: 470px) {
-.cardContainer {
-    gap: 1.5rem;
-    width: 80%;
-    grid-template-columns: 100%;
-    
-}
-}
+  }  
