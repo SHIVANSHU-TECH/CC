@@ -1,48 +1,41 @@
-const mongoose = require("mongoose");
-const User = require("./userModel");
+import mongoose from "mongoose"
+import { Status } from "../helpers/status.js"
 
 const eventSchema = new mongoose.Schema({
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User", // Use "User" here with an uppercase "U"
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-
   title: {
     type: String,
     required: true,
   },
-  DeadlineDate: { 
+  deadlineDate: {
     type: Date,
     required: true,
   },
- 
-  description:{
-    type:String,
-    required:true
+  description: {
+    type: String,
+    required: true,
   },
-  category:{
-    type:String,
-    required:true
+  category: {
+    type: String,
+    required: true,
   },
-  link:{
-    type:String
+  link: {
+    type: String,
   },
   image: {
     type: String,
     required: true,
   },
-  status:{
-    type:String,
-    default:"inVerification",
-    required:true
-  }
+  status: {
+    type: String,
+    enum: Object.values(Status),
+    default: Status.PENDING,
+  },
+})
 
-});
+const Event = mongoose.model("Event", eventSchema)
 
-const Event = mongoose.model("Event", eventSchema);
-
-module.exports = Event;
+module.exports = Event

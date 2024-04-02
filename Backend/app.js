@@ -1,28 +1,20 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+import express from "express"
+import { StatusCodes } from "http-status-codes"
+import cookieParser from "cookie-parser"
+import router from "./routes/userRoutes.js"
+const app = express()
 
-const dotenv = require("dotenv");
-const app = express();
+app.use(cookieParser())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(express.json());
-dotenv.config({ path: "./config.env" });
-
-require("./db/conn");
-
-app.use("/api/v1/post", require("./routes/postRoutes"));
-app.use("/api/v1/user", require("./routes/userRoutes"));
-app.use("/api/v1/event", require("./routes/eventRoutes"));
-app.use("/api/v1/opp", require("./routes/opportunitiesRoutes"));
-
-const PORT = process.env.PORT;
+app.use("/api/v1", router)
 
 app.get("/", (req, res) => {
-  res.send("Home page");
-});
+  res.status(StatusCodes.OK).json({
+    msg: "Health check",
+  })
+})
 
-app.listen(PORT, (req, res) => {
-  console.log(`app is listening on ${PORT}`);
-});
+export { app }

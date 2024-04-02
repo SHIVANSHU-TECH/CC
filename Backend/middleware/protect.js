@@ -1,29 +1,23 @@
-const jwt = require("jsonwebtoken");
+import { asyncHandler } from "../utils/asyncHandler.js"
+import { AuthError } from "../utils/ApiError.js"
+import jwt from "jsonwebtoken"
+import User from "../models/user-model.js"
+import { config } from "../config/config.js"
 
-const User = require("../models/userModel");
+export const isLoggedin = asyncHandler(async (req, _res, next) => {
+  if (
+    req.cookies.token ||
+    (req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer"))
+  ) {
+    let token = req.cookies.token || req.headers.authorization.split(" ")[1]
+    let decoded = jwt.verify(token, config.JWT_SECRET)
 
-const protect = async (req, res, next) => {
-  try {
-    // console.log(req.headers);
-    if (!req.headers.authorization) {
-      return res.status(400).json({ error: "Authorization token not found" });
-    }
-    const token = req.headers.authorization.split(" ")[1];
-    // console.log(token);
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-    // console.log(decodedToken);
-    const user = await User.findById(decodedToken.id);
-    //console.log(user);
-    if (!user) {
-      return res.status(401).json({ message: "User not found" });
-    }
-    req.user = user;
-    // console.log(req);
-    next();
-  } catch (error) {
-    res
-      .status(401)
-      .json({ message: "Invalid credentials", error: error.stack });
+    const user = await User.findById(decoded._id)
+    req.user = user
+
+    next()
+  } else {
+    throw new AuthError()
   }
-};
-module.exports = protect;
+})
