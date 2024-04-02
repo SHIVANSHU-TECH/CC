@@ -32,15 +32,16 @@ const links = [
     title: "About",
     url: "/about",
   },
-  {
-    id: 5,
-    title: "Auth",
-    url: "/register",
-  },
+  // {
+  //   id: 5,
+  //   title: "Auth",
+  //   url: "/register",
+  // },
   {
     id: 6,
     title: "Opportunities",
     url: "/internships",
+<<<<<<< HEAD
   },
   {
     id: 7,
@@ -48,6 +49,15 @@ const links = [
     url: "/user-dashboard",
   },
 ]
+=======
+  }
+  //  ,{
+  //    id:7,
+  //    title:"Dashboard",
+  //   url:"/user-dashboard"
+  //  }
+];
+>>>>>>> 8d443332b902196e104b4ecd7f58811c1590fc22
 
 const Navbar = () => {
   const router = useRouter()
@@ -62,6 +72,7 @@ const Navbar = () => {
   // const containerStyle = {
   //   backgroundColor: isDarkTheme ? "#fff" : "#111",
   // };
+<<<<<<< HEAD
   const handlesignOut = () => {
     localStorage.removeItem("token")
     setlogg(false)
@@ -78,6 +89,29 @@ const Navbar = () => {
       router.push("/login")
     }
   }, [localStorage.getItem("token")])
+=======
+  //  const handlesignOut =()=>{
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("dashboardAuthenticated");
+  //   setlogg(false);
+  //   router.push("/")
+  //  }
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //     if( token && token.length > 0){
+  //       setlogg(true);
+  //       router.push("/")
+  //     }
+  //     else{
+  //       setlogg(false);
+  //       router.push("/login")
+  //     }
+
+
+  // }, [localStorage.getItem("token")])
+  
+>>>>>>> 8d443332b902196e104b4ecd7f58811c1590fc22
 
   return (
     <div className={styles.container}>
@@ -111,6 +145,7 @@ const Navbar = () => {
             Logout
           </button>
         )}
+<<<<<<< HEAD
       </div>
       <AiOutlineMenu
         className={styles.menu}
@@ -123,3 +158,28 @@ const Navbar = () => {
 }
 
 export default Navbar
+=======
+     </div>
+}
+      <div className={styles.links} id={styles.menuBig} >
+        
+        {links.map((link) => (
+          <Link key={link.id} href={link.url} className={styles.link}>
+            {link.title}
+          </Link>
+        ))}
+        {/* {logg && (
+          <button className={styles.logout} onClick={()=>handlesignOut()}>
+            Logout
+          </button>
+        )} */}
+     </div>
+      < AiOutlineMenu  className={styles.menu} onClick={()=>{
+        setMenuOpen(!menuOpen);
+      }
+      } />
+    </div>
+  );
+    };
+export default Navbar;
+>>>>>>> 8d443332b902196e104b4ecd7f58811c1590fc22
