@@ -1,15 +1,14 @@
-"use client";
-import Link from "next/link";
-import React, { useEffect, useState} from "react";
-import styles from "./navbar.module.css";
+"use client"
+import Link from "next/link"
+import React, { useEffect, useState } from "react"
+import styles from "./navbar.module.css"
 // import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
-import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
-import menu from "public/menu.png";
-import { AiOutlineMenu } from 'react-icons/ai';
-import NextTopLoader from "nextjs-toploader";
-import { useRouter } from "next/navigation";
-
+import { signOut, useSession } from "next-auth/react"
+import Image from "next/image"
+import menu from "public/menu.png"
+import { AiOutlineMenu } from "react-icons/ai"
+import NextTopLoader from "nextjs-toploader"
+import { useRouter } from "next/navigation"
 
 //  import { themeContext } from "../../context/ThemeContext";
 const links = [
@@ -42,6 +41,15 @@ const links = [
     id: 6,
     title: "Opportunities",
     url: "/internships",
+<<<<<<< HEAD
+  },
+  {
+    id: 7,
+    title: "Dashboard",
+    url: "/user-dashboard",
+  },
+]
+=======
   }
   //  ,{
   //    id:7,
@@ -49,20 +57,39 @@ const links = [
   //   url:"/user-dashboard"
   //  }
 ];
+>>>>>>> 8d443332b902196e104b4ecd7f58811c1590fc22
 
 const Navbar = () => {
-  const router = useRouter();
-  const session = useSession();
-  const [menuOpen, setMenuOpen]=useState(false)
+  const router = useRouter()
+  // const session = useSession();
+  const [menuOpen, setMenuOpen] = useState(false)
   const [logg, setlogg] = useState(false)
   // const [isDark, setIsDark]=useState(false);
   // const theme = useContext(themeContext);
   // const dark = theme.state.dark;
   // const[ isDarkTheme, setIsDarkTheme] = useState(false) // Set to true or false based on your theme logic
-   
+
   // const containerStyle = {
   //   backgroundColor: isDarkTheme ? "#fff" : "#111",
   // };
+<<<<<<< HEAD
+  const handlesignOut = () => {
+    localStorage.removeItem("token")
+    setlogg(false)
+    router.push("/")
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token && token.length > 0) {
+      setlogg(true)
+      // router.push("/")
+    } else {
+      setlogg(false)
+      router.push("/login")
+    }
+  }, [localStorage.getItem("token")])
+=======
   //  const handlesignOut =()=>{
   //   localStorage.removeItem("token");
   //   localStorage.removeItem("dashboardAuthenticated");
@@ -84,27 +111,54 @@ const Navbar = () => {
 
   // }, [localStorage.getItem("token")])
   
+>>>>>>> 8d443332b902196e104b4ecd7f58811c1590fc22
 
   return (
-    <div className={styles.container}  >
-      <NextTopLoader  color="#fff"  size="10px" />
-      <Link href="/" className={styles.logo}>
+    <div className={styles.container}>
+      <NextTopLoader color='#fff' size='10px' />
+      <Link href='/' className={styles.logo}>
         College Connect
       </Link>
       {/* <DarkModeToggle /> */}
-      {menuOpen && 
-      <div className={styles.links} id={styles.menuSmall} >
-        
+      {menuOpen && (
+        <div className={styles.links} id={styles.menuSmall}>
+          {links.map((link) => (
+            <Link key={link.id} href={link.url} className={styles.link}>
+              {link.title}
+            </Link>
+          ))}
+          {logg && (
+            <button className={styles.logout} onClick={() => handlesignOut()}>
+              Logout
+            </button>
+          )}
+        </div>
+      )}
+      <div className={styles.links} id={styles.menuBig}>
         {links.map((link) => (
           <Link key={link.id} href={link.url} className={styles.link}>
             {link.title}
           </Link>
         ))}
         {logg && (
-          <button className={styles.logout} onClick={()=>handlesignOut()}>
+          <button className={styles.logout} onClick={() => handlesignOut()}>
             Logout
           </button>
         )}
+<<<<<<< HEAD
+      </div>
+      <AiOutlineMenu
+        className={styles.menu}
+        onClick={() => {
+          setMenuOpen(!menuOpen)
+        }}
+      />
+    </div>
+  )
+}
+
+export default Navbar
+=======
      </div>
 }
       <div className={styles.links} id={styles.menuBig} >
@@ -128,3 +182,4 @@ const Navbar = () => {
   );
     };
 export default Navbar;
+>>>>>>> 8d443332b902196e104b4ecd7f58811c1590fc22

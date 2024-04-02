@@ -1,45 +1,26 @@
-const mongoose = require("mongoose");
-const User = require("./userModel");
+import mongoose from "mongoose"
 
-const postSchema = new mongoose.Schema({
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Use "User" here with an uppercase "U"
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-
-  message: {
-    type: String,
-    required: true,
-  },
-
-  image: {
-    type: String,
-    required: true,
-  },
-  likes: [
-    {
+const postSchema = new mongoose.Schema(
+  {
+    createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "User", // Use "User" here with an uppercase "U"
     },
-  ],
-  comments: [
-    {
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-      },
-      comment: {
-        type: String,
-        required: true,
-      },
+    image: {
+      type: String,
+      required: true,
     },
-  ],
-});
 
-const Post = mongoose.model("Post", postSchema);
+    message: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+)
 
-module.exports = Post;
+const Post = mongoose.model("Post", postSchema)
+
+module.exports = Post
